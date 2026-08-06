@@ -1,5 +1,5 @@
 import React, { createElement } from "react";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
+import { createHashRouter, RouterProvider, Outlet } from "react-router";
 import About from "./About";
 import ReactDom from "react-dom/client";
 import "../../App.css"
@@ -22,7 +22,7 @@ const AppLayout = () => {
         </Provider>
     );
 }
-const approuter = createBrowserRouter([
+const approuter = createHashRouter([
     {
         path: "/",
         element: <AppLayout />,
