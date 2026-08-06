@@ -1,0 +1,38 @@
+{
+  "name": "swiggy",
+  "version": "1.0.0",
+  "description": "Creating app called chuggy",
+  "license": "ISC",
+  "author": "Sriram Mookkandi",
+  "type": "commonjs",
+  "homepage": "https://<username>.github.io/<repository-name>",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "@babel/core": "^8.0.1",
+    "@babel/preset-env": "^8.0.2",
+    "autoprefixer": "^10.5.4",
+    "babel-jest": "^30.4.1",
+    "gh-pages": "^6.3.0",
+    "jest-environment-jsdom": "^30.4.1",
+    "parcel": "^2.16.4",
+    "postcss": "^8.5.23"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.12.0",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@testing-library/react": "^16.3.2",
+    "and": "^0.0.3",
+    "jest": "^30.4.2",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-redux": "^9.3.0",
+    "react-router-dom": "^7.11.0",
+    "tailwindcss": "^4.3.3"
+  }
+}
