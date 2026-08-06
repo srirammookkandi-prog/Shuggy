@@ -5,7 +5,7 @@
   "license": "ISC",
   "author": "Sriram Mookkandi",
   "type": "commonjs",
-  "homepage": "https://<username>.github.io/<repository-name>",
+  "homepage": "https://srirammookkandi-prog.github.io/Shuggy",
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
