@@ -7,6 +7,6 @@ export const LOGO_URL =
 //export const RESTAURANT_MENU_API = 'https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.0145405&lng=77.6768368&restaurantId=347243&catalog_qa=undefined&submitAction=ENTER';
 
 export const RESTAURANT_MENU_API =
-  "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.0145405&lng=77.6768368&restaurantId=";
+  "https://shuggy-api.vercel.app/api/menu?resId=";
 
 export const IMAGE_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/"
