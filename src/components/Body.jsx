@@ -18,7 +18,7 @@ const Body = () => {
     }, []);
     const fetchData = async () => {
         try {
-            const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0145405&lng=77.6768368&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
+            const data = await fetch("https://shuggy-api.vercel.app/api/restaurant");
             const json = await data.json();
             console.log(json?.data?.cards?.find((items) => items?.card?.card?.id?.includes("top_brands_for_you"))?.card?.card?.gridElements?.infoWithStyle?.restaurants);
             setListOfRestaurants(json?.data?.cards?.find((items) => items?.card?.card?.id?.includes("top_brands_for_you"))?.card?.card?.gridElements?.infoWithStyle?.restaurants);
