@@ -1,9 +1,9 @@
 import Restaurant, { withPromotedLabel } from "./Restaurant";
 import Shimmer from "./Shimmer";
-import resList from "../../utils/mockData";
+import resList from "../utils/mockData";
 import { useEffect, useState } from "react";
 import { Link } from 'react-router';
-import useOnlineStatus from "../../utils/useOnlineStatus";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 

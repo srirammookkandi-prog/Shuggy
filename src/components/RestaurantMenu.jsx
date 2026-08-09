@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import Shimmer from './Shimmer';
-import { RESTAURANT_MENU_API } from '../../utils/constants';
+import { RESTAURANT_MENU_API } from '../utils/constants';
 import ItemCategory from './ItemCategory';
 import NestedCategory from './NestedCategory';
-import useResInfo from '../../utils/useResInfo';
-import useOrganisedData from '../../utils/useOrganisedData';
+import useResInfo from '../utils/useResInfo';
+import useOrganisedData from '../utils/useOrganisedData';
 import { useParams } from 'react-router';
-import { CDN_URL } from '../../utils/constants';
+import { CDN_URL } from '../utils/constants';
 
 const RestaurantMenu = () => {
   const { resId } = useParams();

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import useOnlineStatus from "../../utils/useOnlineStatus";
+import useOnlineStatus from "../utils/useOnlineStatus";
 import { useSelector } from "react-redux";
 
 const Header = () => {

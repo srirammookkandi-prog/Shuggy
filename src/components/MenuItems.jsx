@@ -1,7 +1,7 @@
 import React from 'react'
-import { IMAGE_URL } from '../../utils/constants';
+import { IMAGE_URL } from '../utils/constants';
 import { useDispatch } from 'react-redux';
-import { addItem } from '../../utils/cartSlice';
+import { addItem } from '../utils/cartSlice';
 
 const MenuItems = (props) => {
     const { name, defaultPrice, price, description, imageId } = props.menuInfo;
