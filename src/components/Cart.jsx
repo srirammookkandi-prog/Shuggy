@@ -20,7 +20,6 @@ const Cart = () => {
                         key={index}
                         menuInfo={item.menuInfo}
                     />
-
                 ))}
 
                 <div> <button className='m-2 p-2 bg-black text-white rounded-3xl' onClick={() => handleClearCart()}>Clear cart</button></div>

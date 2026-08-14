@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Shimmer from './Shimmer';
+import Shimmer from '../components/Shimmer/Shimmer';
 import { RESTAURANT_MENU_API } from '../../utils/constants';
 import ItemCategory from './ItemCategory';
 import NestedCategory from './NestedCategory';
@@ -12,9 +12,8 @@ const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useResInfo(resId);
   const resMenu = useOrganisedData(resId);
-  if (resInfo === null) return <Shimmer />;
+  if (resInfo == null) return <Shimmer />;
   const { name, cuisines, costForTwoMessage, cloudinaryImageId } = resInfo?.cards[2]?.card?.card?.info;
-
   return (
     <div className='m-auto'>
       <h1 className='text-center font-bold text-3xl p-3'>{name}</h1>
