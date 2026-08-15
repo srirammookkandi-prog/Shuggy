@@ -43,15 +43,36 @@ const Search = () => {
           <h1>Results for "{input}"</h1>
         )}
       </div>
-      <div className=" flex flex-wrap justify-around ">
-        {listOfRestaurants
-          .filter((res) =>
-            res.info.name.toLowerCase().includes(input.toLowerCase()),
-          )
-          .map((restaurant) => (
-            <Restaurant key={restaurant?.info?.id} resData={restaurant} />
-          ))}
-      </div>
+      <div className="flex flex-wrap justify-around">
+  {
+    listOfRestaurants.filter((res) =>
+      res.info.name
+        .toLowerCase()
+        .includes(input.toLowerCase())
+    ).length > 0 ? (
+
+      listOfRestaurants
+        .filter((res) =>
+          res.info.name
+            .toLowerCase()
+            .includes(input.toLowerCase())
+        )
+        .map((restaurant) => (
+          <Link
+            key={restaurant?.info?.id}
+            to={"/restaurants/" + restaurant?.info?.id}
+          >
+            <Restaurant resData={restaurant} />
+          </Link>
+        ))
+
+    ) : (
+      <h1 className="font-semibold text-2xl p-5">
+        No Result Found
+      </h1>
+    )
+  }
+</div>
     </>
   );
 };

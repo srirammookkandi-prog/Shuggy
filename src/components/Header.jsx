@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { useSelector } from "react-redux";
-import { UserRound, Search } from "lucide-react";
+import { UserRound, Search, Circle} from "lucide-react";
 import { BsCart } from "react-icons/bs";
+import SignIn from "./SignIn";
 
 const Header = () => {
-  const [buttonName, setButtonName] = useState("Sign in");
   const cartItems = useSelector((store) => store.cart.items);
   console.log(cartItems);
 
@@ -27,15 +27,12 @@ const Header = () => {
             <Search />
             <span className="mx-2 font-semibold text-lg "><Link to="/search">Search</Link></span>
           </div>
-          <div className="flex justify-around">
-            <UserRound size={25} />
-            <span className="mx-2 font-semibold text-lg ">
-              <Link to="/signin">Sign In</Link>
-              </span>
+          <div>
+            <SignIn />
           </div>
           <div className="mx-10 flex items-center gap-2 cursor-pointer">
             <div className="relative">
-              <BsCart size={32} strokeWidth={0.1} />
+              <Circle />
               <span className="absolute inset-0 flex items-center justify-center text-xs font-semibold">
                 {cartItems.length}
               </span>
