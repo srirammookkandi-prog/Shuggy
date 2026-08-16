@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import MenuItems from './MenuItems'
 import { useDispatch } from 'react-redux'
 import { clearCart } from '../../utils/cartSlice'
+import { Link } from 'react-router'
 
 const Cart = () => {
     const cartItems = useSelector((store) => store.cart.items)
@@ -22,7 +23,9 @@ const Cart = () => {
                     />
                 ))}
 
-                <div> <button className='m-2 p-2 bg-black text-white rounded-3xl' onClick={() => handleClearCart()}>Clear cart</button></div>
+                <div> {(cartItems.length == 0)?
+                (<button className='m-2 px-4 py-2 bg-orange-500 text-white rounded-3xl'><Link to="/">See Restaurant List</Link></button>):
+                (<button className='m-2 p-2 bg-black text-white rounded-3xl' onClick={() => handleClearCart()}>Clear cart</button>)}</div>
 
             </div>
         </div>

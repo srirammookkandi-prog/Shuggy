@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { useSelector } from "react-redux";
-import { UserRound, Search, Circle} from "lucide-react";
-import { BsCart } from "react-icons/bs";
+import { UserRound, Search, Circle,} from "lucide-react";
 import SignIn from "./SignIn";
+import Logout from "./Logout";
 
 const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
+  const user = useSelector((store) => store.user.users);
 
   return (
     <div className="flex justify-between p-5 bg-orange-600">
@@ -28,7 +28,7 @@ const Header = () => {
             <span className="mx-2 font-semibold text-lg "><Link to="/search">Search</Link></span>
           </div>
           <div>
-            <SignIn />
+           {user ?<Logout/>:<SignIn />}
           </div>
           <div className="mx-10 flex items-center gap-2 cursor-pointer">
             <div className="relative">
