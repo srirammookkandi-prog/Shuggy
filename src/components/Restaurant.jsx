@@ -21,16 +21,5 @@ const Restaurant = (props) => {
         </div>
     );
 }
-export const withPromotedLabel = (Restaurant) => {
-    return (props) => {
-        return (
-            <div>
-                <label>Promoted</label>
-                <Restaurant {...props} />
-            </div>
-        );
-    };
-};
-
 
 export default Restaurant
