@@ -14,7 +14,7 @@ const Search = () => {
     setFinalList(listOfRestaurants);
   }, [listOfRestaurants]);
 
-  return (listOfRestaurants.length == 0) ? (
+  return (listOfRestaurants?.length == 0) ? (
     <SearchShimmer />
   ) : (
     <>
@@ -44,35 +44,35 @@ const Search = () => {
         )}
       </div>
       <div className="flex flex-wrap justify-around">
-  {
-    listOfRestaurants.filter((res) =>
-      res.info.name
-        .toLowerCase()
-        .includes(input.toLowerCase())
-    ).length > 0 ? (
+        {
+          listOfRestaurants.filter((res) =>
+            res.info.name
+              .toLowerCase()
+              .includes(input.toLowerCase())
+          ).length > 0 ? (
 
-      listOfRestaurants
-        .filter((res) =>
-          res.info.name
-            .toLowerCase()
-            .includes(input.toLowerCase())
-        )
-        .map((restaurant) => (
-          <Link
-            key={restaurant?.info?.id}
-            to={"/restaurants/" + restaurant?.info?.id}
-          >
-            <Restaurant resData={restaurant} />
-          </Link>
-        ))
+            listOfRestaurants
+              .filter((res) =>
+                res.info.name
+                  .toLowerCase()
+                  .includes(input.toLowerCase())
+              )
+              .map((restaurant) => (
+                <Link
+                  key={restaurant?.info?.id}
+                  to={"/restaurants/" + restaurant?.info?.id}
+                >
+                  <Restaurant resData={restaurant} />
+                </Link>
+              ))
 
-    ) : (
-      <h1 className="font-semibold text-2xl p-5">
-        No Result Found
-      </h1>
-    )
-  }
-</div>
+          ) : (
+            <h1 className="font-semibold text-2xl p-5">
+              No Result Found
+            </h1>
+          )
+        }
+      </div>
     </>
   );
 };
