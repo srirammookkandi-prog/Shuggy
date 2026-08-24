@@ -1,91 +1,141 @@
-import React,{useState}from 'react'
+import { useState } from 'react'
+import { checkValidateData } from '../../utils/Validate';
 import { UserRound } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { login } from "../../utils/userSlice";
 
 const SignIn = () => {
-    const [showSignIn, setShowSignIn] = useState(false);
-    const [name,setName] = useState("");
-    const [email,setEmail] = useState("");
-    const [password,setPassword] = useState("");
+  const [showSignIn, setShowSignIn] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
 
-     const user = useSelector((store) => store.user.users);
-    const dispatch = useDispatch();
-    const handleSubmit=(e) => {
-      e.preventDefault();
-      dispatch(login(
-        {
-          name: name,
-          email: email,
-          password: password,
-          loggedIn: true,
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const user = useSelector((store) => store.user.users);
+
+  const toggleSignInForm = () => {
+    setIsSignedIn(!isSignedIn);
+  }
+
+  const name = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
+
+  const handleButtonClick = () => {
+    const message = checkValidateData(name.current?.value || "", email.current.value, password.current.value, isSignedIn);
+    setErrorMessage(message);
+    if (message) return;
+    if (!isSignedIn) {
+      createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          updateProfile(user, {
+            displayName: name.current?.value, photoURL: userProfile
+          }).then(() => {
+            const { uid, email, displayName, photoURL } = auth.currentUser;
+            dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }))
+            navigate("/home");
+          }).catch((error) => {
+            setErrorMessage(error.message)
+          });
         })
-      );
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + errorMessage);
+        });
+    } else {
+      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          navigate("/home");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage("Invalid Email-Id or Password");
+        });
+
     }
+
+  }
+
 
   return (
     <div className="flex justify-around">
-          <div className="relative flex items-center">
-  <UserRound size={25} />
+      <div className="relative flex items-center">
+        <UserRound size={25} />
 
-  <span
-    className="mx-2 font-semibold text-lg cursor-pointer"
-    onClick={() => setShowSignIn(!showSignIn)}
-  >
-    Sign In
-  </span>
+        <span
+          className="mx-2 font-semibold text-lg cursor-pointer"
+          onClick={() => setShowSignIn(!showSignIn)}
+        >
+          Sign In
+        </span>
 
-  {showSignIn && (
-  <div
-    className="fixed inset-0 z-50 flex items-center justify-center bg-black/30"
-    onClick={() => setShowSignIn(false)}
-  >
-     <form onSubmit={(e)=>handleSubmit(e)}>
-    <div
-      className="w-96 rounded-xl bg-white p-7 shadow-xl"
-      onClick={(e) => e.stopPropagation()}
-    >
-      <div className="flex justify-between text-black">
-        <h2 className="text-2xl font-bold">Sign In</h2>
+        {showSignIn && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/30"
+            onClick={() => setShowSignIn(false)}
+          >
+            <form onSubmit={(e) => e.preventDefault()}>
+              <div
+                className="w-96 rounded-xl bg-white p-7 shadow-xl"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="flex justify-between text-black">
+                  <h1 className=' font-bold text-3xl text-red-700 py-4'>
+                    {isSignedIn ? "SIGN IN" : "SIGN UP"}
+                  </h1>
 
-        <button onClick={() => setShowSignIn(false)}>
-          ✕
-        </button>
+                  <button onClick={() => setShowSignIn(false)}>
+                    ✕
+                  </button>
+                </div>
+                {!isSignedIn &&
+                  <input
+                    ref={name}
+                    type='text'
+                    placeholder='Enter Name'
+                    className='p-3 my-4 w-full bg-gray-700 rounded-lg'>
+                  </input>
+                }
+                <input
+                  ref={email}
+                  type='email'
+                  placeholder='Enter Email'
+                  className='p-3 my-4 w-full bg-gray-700 rounded-lg'>
+                </input>
+
+                <input
+                  ref={password}
+                  type='password'
+                  placeholder='Enter Password'
+                  className='p-3 my-4 w-full bg-gray-700 rounded-lg'>
+                </input>
+
+                <p className='text-red-700 font-semibold p-2 text-lg'>
+                  {errorMessage}
+                </p>
+
+                <button
+                  className='p-3 bg-orange-600  hover:bg-orange-700 font-bold text-white w-full my-4 rounded-lg'
+                  onClick={handleButtonClick}>
+                  {isSignedIn ? "Sign In" : "Sign Up"}
+                </button>
+
+                <p className='font-bold text-white cursor-pointer  hover:text-red-700'
+                  onClick={toggleSignInForm}>
+                  {isSignedIn ? "New user register? Sign up" : " Already a User? Sign In"}
+                </p>
+              </div>
+            </form>
+          </div>
+        )}
+
       </div>
-      <input
-      type ="name"
-       placeholder="Enter Name"
-       value={name}
-       onChange={(e)=>setName(e.target.value)}
-      className="mt-6 w-full rounded border p-3 text-black"
-      />
-      <input
-        type="email"
-        placeholder="Enter Email"
-        value={email}
-       onChange={(e)=>setEmail(e.target.value)}
-        className="mt-6 w-full rounded border p-3 text-black"
-      />
-
-      <input
-        type="password"
-        placeholder="Enter Password"
-        value={password}
-        onChange={(e)=>setPassword(e.target.value)}
-        className="mt-4 w-full rounded border p-3 text-black"
-      />
-
-      <button type="submit" className="mt-5 w-full rounded bg-orange-600 p-3 font-bold text-white">
-        Sign In
-      </button>
     </div>
-     </form>
-  </div>
-)}
-  
-</div>
-</div>
   )
 }
 export default SignIn
