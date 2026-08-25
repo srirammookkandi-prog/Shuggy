@@ -1,18 +1,15 @@
-import { useState, useEffect } from 'react';
-import { RESTAURANT_MENU_API } from '../../utils/constants';
 import ItemCategory from './ItemCategory';
 import NestedCategory from './NestedCategory';
 import useRestaurantData from '../../utils/useRestaurantData';
 import { useParams } from 'react-router';
-import { CDN_URL } from '../../utils/constants';
 import RestaurantShimmer from './Shimmer/RestaurantShimmer';
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-   const { resInfo, resMenu } = useRestaurantData(resId);
+  const { resInfo, resMenu } = useRestaurantData(resId);
   if (resInfo == null) return <RestaurantShimmer />;
-  const { name, cuisines, costForTwoMessage} = resInfo?.cards[2]?.card?.card?.info;
-  return (resInfo == null)?<RestaurantShimmer />:(
+  const { name, cuisines, costForTwoMessage } = resInfo?.cards[2]?.card?.card?.info;
+  return (resInfo == null) ? <RestaurantShimmer /> : (
     <div className='m-auto'>
       <h1 className='text-center font-bold text-3xl p-3'>{name}</h1>
       <p className='text-center text-2xl'>{cuisines.join(', ')} - {costForTwoMessage}</p>
