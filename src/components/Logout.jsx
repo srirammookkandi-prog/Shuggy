@@ -3,36 +3,23 @@ import { UserRound } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { removeUser } from "../../utils/userSlice";
+import { auth } from "../../utils/firebase"
+import { signOut } from "firebase/auth";
 
 
 const Logout = () => {
 
   const [showSignIn, setShowSignIn] = useState(false);
-  const user = useSelector((store) => store.user.users);
+  const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const handleSignOut = () => {
     signOut(auth).then(() => {
       dispatch(removeUser);
-      navigate("/login")
     }).catch((error) => {
       navigate("/error")
     });
 
   }
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const { uid, email, displayName, photoURL } = user;
-        dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
-        navigate("/home")
-      } else {
-        dispatch(removeUser());
-        navigate("/login")
-      }
-    });
-    return () => unsubscribe();
-  }, [])
-
   return (
     <div className="flex justify-around">
       <div className="relative flex items-center">
@@ -42,7 +29,7 @@ const Logout = () => {
           className="mx-2 font-semibold text-lg cursor-pointer"
           onClick={() => setShowSignIn(!showSignIn)}
         >
-          {user.name}
+          Sign Out
         </span>
 
         {showSignIn && (
@@ -55,7 +42,7 @@ const Logout = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex justify-between text-black">
-                <h2 className="text-2xl font-bold">Hi, {user.name}</h2>
+                <h2 className="text-2xl font-bold">Why you wanna leave</h2>
 
                 <button onClick={() => setShowSignIn(false)}>
                   ✕
