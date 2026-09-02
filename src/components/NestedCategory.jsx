@@ -9,7 +9,7 @@ const NestedCategory = (props) => {
         setShowItems(!showItems);
     }
     return (
-        <div className='w-8/12 bg-gray-50 shadow-lg p-4 mx-auto my-4 text-left'>
+        <div className='w-10/12 md:w-8/12 bg-gray-50 shadow-lg p-4 mx-auto my-4 text-left'>
             <div className='flex justify-between cursor-pointer' onClick={handleClick}>
                 <span className='font-bold' >{title} ({categories.length})</span>
                 <span>▼</span>

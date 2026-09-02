@@ -28,14 +28,14 @@ const Header = () => {
   }, [])
 
   return (
-    <div className="flex justify-between p-5 bg-orange-600">
+    <div className="flex justify-between py-5  md:p-5 bg-orange-600">
       <div className="flex  font-semibold text-white items-center text-lg mx-5">
         <img
-          className="w-12 rounded-lg"
+          className=" w-8  md:w-12 rounded-lg"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgANqB6675mmRJ8tmv2qM93I77zW2zWnrybPG3wvKr1hDFsnOP_c6oaAA&s=10"
           alt="logo"
         />
-        <h1 className="px-4 ">
+        <h1 className=" md:px-4 md:text-2xl ">
           <Link to="/">Shuggy</Link>
         </h1>
       </div>
@@ -58,6 +58,9 @@ const Header = () => {
             <span className="text-lg font-medium">
               <Link to="/cart"> Cart </Link>
             </span>
+          </div>
+          <div >
+            {user ? <Logout /> : <SignIn />}
           </div>
         </ul>
       </div>
