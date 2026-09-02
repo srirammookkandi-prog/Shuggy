@@ -55,7 +55,6 @@ const Body = () => {
             key={restaurant?.info?.id}
             to={"/restaurants/" + restaurant?.info?.id}
           >
-            {" "}
             <Restaurant resData={restaurant} />
           </Link>
         ))}

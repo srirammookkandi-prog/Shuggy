@@ -63,14 +63,12 @@ const SignIn = () => {
     <div className="flex justify-around">
       <div className="relative flex items-center">
         <UserRound size={25} />
-
         <span
           className="mx-2 font-semibold text-lg cursor-pointer"
           onClick={() => setShowSignIn(!showSignIn)}
         >
           Sign In
         </span>
-
         {showSignIn && (
           <div
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/30"
