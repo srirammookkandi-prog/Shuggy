@@ -1,13 +1,31 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router";
 import { useSelector } from "react-redux";
-import { UserRound, Search, Circle,} from "lucide-react";
+import { Search, Circle, } from "lucide-react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../utils/firebase";
+import { useDispatch } from "react-redux";
+import { addUser, removeUser } from "../../utils/userSlice";
 import SignIn from "./SignIn";
 import Logout from "./Logout";
 
+
+
 const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
-  const user = useSelector((store) => store.user.users);
+  const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { email, displayName } = user;
+        dispatch(addUser({ email: email, displayName: displayName }));
+      } else {
+        dispatch(removeUser());
+      }
+    });
+    return () => unsubscribe();
+  }, [])
 
   return (
     <div className="flex justify-between p-5 bg-orange-600">
@@ -23,12 +41,12 @@ const Header = () => {
       </div>
       <div className="navitems flex items-center">
         <ul className="flex align-middle px-4 font-bold text-white ">
-          <div  className="mx-10 flex justify-around">
+          <div className="mx-10 flex justify-around">
             <Search />
             <span className="mx-2 font-semibold text-lg "><Link to="/search">Search</Link></span>
           </div>
           <div>
-           {user ?<Logout/>:<SignIn />}
+            {user ? <Logout /> : <SignIn />}
           </div>
           <div className="mx-10 flex items-center gap-2 cursor-pointer">
             <div className="relative">
