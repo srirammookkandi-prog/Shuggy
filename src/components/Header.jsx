@@ -40,10 +40,13 @@ const Header = () => {
         </h1>
       </div>
       <div className="navitems flex items-center">
-        <ul className="flex items-center align-middle px-4 font-bold text-white ">
-          <div><Link className="flex justify-between" to="/search">
+        <ul className="flex align-middle px-4 font-bold text-white ">
+          <div className="mx-10 flex justify-around">
             <Search />
-            <span className="hidden md:inline-block mx-2 font-semibold text-lg ">Search</span></Link>
+            <span className="mx-2 font-semibold text-lg "><Link to="/search">Search</Link></span>
+          </div>
+          <div>
+            {user ? <Logout /> : <SignIn />}
           </div>
           <div className="mx-10 flex items-center gap-2 cursor-pointer">
             <div className="relative">
