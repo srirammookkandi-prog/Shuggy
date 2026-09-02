@@ -11,8 +11,8 @@ const RestaurantMenu = () => {
   const { name, cuisines, costForTwoMessage } = resInfo?.cards[2]?.card?.card?.info;
   return (resInfo == null) ? <RestaurantShimmer /> : (
     <div className='m-auto'>
-      <h1 className='text-center font-bold text-3xl p-3'>{name}</h1>
-      <p className='text-center text-2xl'>{cuisines.join(', ')} - {costForTwoMessage}</p>
+      <h1 className='text-center font-bold text-xl md:text-3xl p-3'>{name}</h1>
+      <p className='text-center text-lg md:text-2xl'>{cuisines.join(', ')} - {costForTwoMessage}</p>
       {
         resMenu?.map((category) => category.type === "item" ?
           (<ItemCategory key={category.title} data={category} />) :
