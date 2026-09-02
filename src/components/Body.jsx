@@ -5,8 +5,6 @@ import { Link } from "react-router";
 import useOnlineStatus from "../../utils/useOnlineStatus";
 import useListofRestaurant from "../../utils/CustomHooks/useListofRestaurant";
 
-
-
 const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
