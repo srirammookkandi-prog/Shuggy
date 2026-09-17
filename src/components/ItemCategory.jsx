@@ -17,7 +17,7 @@ const ItemCategory = (props) => {
                 </div>
                 {showItems &&
                     itemCards.map((item) => (
-                        <MenuItems key={item?.card?.info?.id} menuInfo={item?.card?.info} />
+                        <MenuItems key={item?.card?.info?.id} menuInfo={item?.card?.info} name={name} />
                     ))
                 }
 
