@@ -1,12 +1,11 @@
-import React from 'react'
-
 const ResShimmerCard = () => {
   return (
-    <div  className=' flex justify justify-between mx-10 my-5 bg-gray-300'>
-          <div className="w-[500px] h-[200px] py-2 rounded-4xl bg-gray-200 " ></div>
-          <div className="w-[200px] h-[200px] bg-gray-200 mx-5 my-1"></div>
-         
-        </div>
+    <div className=' mx-5 my-2 bg-gray-300'>
+      <div className='flex justify justify-between'>
+        <div className="w-[800px] h-[200px] m-5 rounded-4xl bg-gray-200 " ></div>
+        <div className="w-[150px] h-[150px] bg-gray-200 mx-5 my-auto"></div>
+      </div>
+    </div>
   )
 }
 
