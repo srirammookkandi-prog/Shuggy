@@ -4,6 +4,7 @@ import MenuItems from './MenuItems';
 const ItemCategory = (props) => {
     const [showItems, setShowItems] = useState(true);
     const { title, itemCards } = props?.data;
+    const { restaurantName, restaurantId } = props;
 
     const handleClick = () => {
         setShowItems(!showItems);
@@ -17,7 +18,7 @@ const ItemCategory = (props) => {
                 </div>
                 {showItems &&
                     itemCards.map((item) => (
-                        <MenuItems key={item?.card?.info?.id} menuInfo={item?.card?.info} />
+                        <MenuItems key={item?.card?.info?.id} menuInfo={item?.card?.info} restaurantName={restaurantName} restaurantId={restaurantId} />
                     ))
                 }
 
