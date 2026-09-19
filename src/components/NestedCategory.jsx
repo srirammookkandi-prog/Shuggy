@@ -4,6 +4,7 @@ import MenuItems from './MenuItems';
 const NestedCategory = (props) => {
     const [showItems, setShowItems] = useState(true);
     const { title, categories } = props?.data;
+    const { restaurantName, restaurantId } = props;
     const handleClick = () => {
         console.log("Clicked")
         setShowItems(!showItems);
@@ -21,7 +22,7 @@ const NestedCategory = (props) => {
                         <div>
                             {
                                 subcategory?.itemCards?.map((item) => (
-                                    < MenuItems key={item?.card?.info?.id} menuInfo={item?.card?.info} />))
+                                    <MenuItems key={item?.card?.info?.id} menuInfo={item?.card?.info} restaurantName={restaurantName} restaurantId={restaurantId} />))
                             }
                         </div>
                     </div>
