@@ -2,7 +2,7 @@ import ItemCategory from './ItemCategory';
 import NestedCategory from './NestedCategory';
 import useRestaurantData from '../../utils/useRestaurantData';
 import { useParams } from 'react-router';
-import RestaurantShimmer from './Shimmer/RestaurantShimmer';
+import RestaurantShimmer from '../Shimmer/RestaurantShimmer';
 
 
 const RestaurantMenu = () => {

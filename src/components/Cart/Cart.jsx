@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import MenuItems from './MenuItems'
+import MenuItems from '../RestaurantMenu/MenuItems'
 import { useDispatch } from 'react-redux'
 import { clearCart } from '../../utils/cartSlice'
 import { Link } from 'react-router'
