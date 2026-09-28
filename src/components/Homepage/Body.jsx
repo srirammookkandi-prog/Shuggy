@@ -1,5 +1,5 @@
-import Restaurant from "./Restaurant";
-import Shimmer from "./Shimmer/Shimmer";
+import Restaurant from "../RestaurantMenu/Restaurant";
+import Shimmer from "../Shimmer/Shimmer";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import useOnlineStatus from "../../utils/useOnlineStatus";

@@ -2,15 +2,15 @@ import React, { createElement } from "react";
 import { createHashRouter, RouterProvider, Outlet } from "react-router";
 import ReactDom from "react-dom/client";
 import "../../App.css"
-import Header from "./Header";
-import Body from "./Body";
-import Error from "./Error";
-import RestaurantMenu from "./RestaurantMenu";
+import Header from "./Homepage/Header";
+import Body from "./Homepage/Body";
+import Error from "./Homepage/Error";
+import RestaurantMenu from "./RestaurantMenu/RestaurantMenu";
 import { Provider } from "react-redux";
-import appStore from "../../utils/appStore";
-import Cart from "./Cart";
-import SignIn from "./SignIn";
-import Search from "./Search";
+import appStore from "../utils/appStore";
+import Cart from "./Cart/Cart";
+import SignIn from "./Authentication/SignIn";
+import Search from "./Homepage/Search";
 const AppLayout = () => {
     return (
         <Provider store={appStore}>
@@ -39,12 +39,12 @@ const approuter = createHashRouter([
                 element: <Cart />,
             },
             {
-                 path: "/signin",
-                element: <SignIn/>,
+                path: "/signin",
+                element: <SignIn />,
             },
             {
-                path:"/search",
-                element: <Search/>,
+                path: "/search",
+                element: <Search />,
             }
             ],
         errorElement: <Error />

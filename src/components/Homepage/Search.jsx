@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { X } from "lucide-react";
 import useListofRestaurant from "../../utils/CustomHooks/useListofRestaurant";
-import Restaurant from "./Restaurant";
-import SearchShimmer from "./Shimmer/SearchShimmer";
+import Restaurant from "../RestaurantMenu/Restaurant";
+import SearchShimmer from "../Shimmer/SearchShimmer";
 
 const Search = () => {
   const [input, setInput] = useState("");

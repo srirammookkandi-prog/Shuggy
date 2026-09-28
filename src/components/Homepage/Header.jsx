@@ -6,9 +6,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../../utils/userSlice";
-import SignIn from "./SignIn";
-import Logout from "./Logout";
-
+import SignIn from "../Authentication/SignIn";
+import Logout from "../Authentication/Logout";
 
 
 const Header = () => {
